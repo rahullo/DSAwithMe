@@ -38,7 +38,7 @@ class Stack:
     def printList(self):
         curr = self.top
         while curr != None:
-            print(curr.data)
+            print(curr.data, end=' ')
             curr = curr.next
     
     # def pop(self):
@@ -55,9 +55,9 @@ st.insert(6)
 st.insert(7)
 # print(st.peek())
 st.printList()
-print('\n')
-print(st.pop())
-print('\n')
-st.printList()
+# print('\n')
+# print(st.pop())
+# print('\n')
+# st.printList()
 
 
