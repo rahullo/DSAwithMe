@@ -20,11 +20,11 @@ class Queue:
         if self.first == None:
             self.first = new_node
             self.last = new_node
-            self.length += 1
         else:
             self.last.next = new_node
             self.last = new_node
-            self.length +=1
+        self.length +=1
+        return self
 
     def dequeue(self):
         if self.first == None:
