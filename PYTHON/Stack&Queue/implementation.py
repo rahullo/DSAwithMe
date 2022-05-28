@@ -5,27 +5,27 @@ class Node:
 
 class Stack:
     def __init__(self):
-        self.head = None
-        self.tail = self.head
+        self.top = None
+        self.bottom = self.top
 
     def insert(self, val):
         new_node = Node(val)
-        if self.head == None:
-            self.head = new_node
-            self.tail = self.head
+        if self.top == None:
+            self.top = new_node
+            self.bottom = self.top
         else:
-            self.tail.next = new_node
-            self.tail = new_node
+            self.bottom.next = new_node
+            self.bottom = new_node
 
     def peek(self):
-        if self.head ==None:
-            return self.tail
+        if self.top ==None:
+            return self.bottom
         else:
-            return self.tail.data
+            return self.bottom.data
 
     def pop(self):
-        curr = self.head
-        if self.head ==None:
+        curr = self.top
+        if self.top ==None:
             return "Stack is Empty"
         else:
             while curr.next.next != None:
@@ -36,7 +36,7 @@ class Stack:
             return temp
 
     def printList(self):
-        curr = self.head
+        curr = self.top
         while curr != None:
             print(curr.data)
             curr = curr.next
