@@ -15,22 +15,6 @@ class BinarySearchTree:
             return
         else:
             current_node  = self.root
-            # while(current_node.left != new_node) and (current_node.right != new_node):
-            #     if value > current_node.value:
-            #         if current_node.right == None:
-            #             current_node.right = new_node
-            #         else:
-            #             current_node = current_node.right
-            #     elif value < current_node.value:
-            #         if current_node.left == None:
-            #             current_node.left = new_node
-            #         else:
-            #             current_node = current_node.left
-            #     else:
-            #         current_node = current_node.right
-                
-            # return
-
             while(current_node.left != new_node) and ( current_node.right != new_node):
                 if value > current_node.value:
                     if current_node.right == None:
