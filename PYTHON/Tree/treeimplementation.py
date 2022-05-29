@@ -16,7 +16,7 @@ class BinarySearchTree:
         else:
             current_node  = self.root
             while True:
-                if value > current_node.value:
+                if value >= current_node.value:
                     if current_node.right == None:
                         current_node.right = new_node
                         return
@@ -28,10 +28,6 @@ class BinarySearchTree:
                         return
                     else:
                         current_node = current_node.left
-                else:
-                    current_node = current_node.right
-                    
-            return
             
 
     def lookup(self, value):
