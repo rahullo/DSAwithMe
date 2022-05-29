@@ -15,27 +15,38 @@ class BinarySearchTree:
             return
         else:
             current_node  = self.root
-            while(current_node.left != new_node) and ( current_node.right != new_node):
+            while True:
                 if value > current_node.value:
                     if current_node.right == None:
                         current_node.right = new_node
+                        return
                     else:
                         current_node = current_node.right
                 elif(value < current_node.value):
                     if(current_node.left == None):
                         current_node.left = new_node
+                        return
                     else:
                         current_node = current_node.left
                 else:
                     current_node = current_node.right
                     
             return
-            # while curr != None:
-            #     if value >= curr.value:
-            #         curr = curr.right
-            #     else:
-            #         curr = curr.left
-            # curr = new_node
+            
+
+    def lookup(self, value):
+        if self.root == None:
+            return "Tree is empty!!!"
+        else:
+            curr = self.root
+            while curr:
+                if value > curr.value:
+                    curr = curr.right
+                elif value < curr.value:
+                    curr = curr.left
+                elif value == curr.value:
+                    return "FOUND"
+        return "NOT FOUND"
 
 bin = BinarySearchTree()
 bin.insert(20)
@@ -47,7 +58,7 @@ bin.insert(19)
 bin.insert(20)
 bin.insert(9)
 bin.insert(15)
-
+print(bin.lookup(0))
 COUNT = [10]
 
 def print2DUtil(root, space) :
