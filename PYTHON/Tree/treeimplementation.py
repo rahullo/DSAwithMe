@@ -44,6 +44,23 @@ class BinarySearchTree:
                     return "FOUND"
         return "NOT FOUND"
 
+    def remove(self, value):
+        if self.root == None:
+            return "Tree Is Empty"
+
+        current_node = self.root
+        parent_node = None
+        while current_node != None:
+            if value >= current_node.value:
+                parent_node = current_node
+                current_node = current_node.right
+            elif value < current_node.value:
+                parent_node = current_node
+                current_node = current_node.left
+            
+            
+                
+
 bin = BinarySearchTree()
 bin.insert(20)
 bin.insert(25)
