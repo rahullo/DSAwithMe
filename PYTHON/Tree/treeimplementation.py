@@ -51,12 +51,37 @@ class BinarySearchTree:
         current_node = self.root
         parent_node = None
         while current_node != None:
-            if value >= current_node.value:
+            if value > current_node.value:
                 parent_node = current_node
                 current_node = current_node.right
             elif value < current_node.value:
                 parent_node = current_node
                 current_node = current_node.left
+            else:
+                #Node has only left child
+                if current_node.right == None and current_node.left != None:
+                    if parent_node == None:
+                        self.root = current_node.left
+                        return
+                    else:
+                        if parent_node.value > current_node.value:
+                            parent_node.left = current_node.left
+                            return
+                        else:
+                            parent_node.right = current_node.left
+                            return
+                # Node has only right child node
+                elif current_node.left == None and current_node.right != None:
+                    if parent_node == None:
+                        self.root = current_node.right
+                        return
+                    else:
+                        if parent_node.value > current_node.value:
+                            parent_node.left = current_node.right
+                            return
+                        else:
+                            parent_node.right = current_node.right
+                            return
             
             
                 
@@ -67,10 +92,9 @@ bin.insert(25)
 bin.insert(17)
 bin.insert(23)
 bin.insert(24)
-bin.insert(19)
-bin.insert(20)
-bin.insert(9)
 bin.insert(15)
+# bin.insert(9)
+# bin.insert(15)
 print(bin.lookup(0))
 COUNT = [10]
 
@@ -104,4 +128,7 @@ def print2D(root) :
     print2DUtil(root, 0)
 
 
+print2D(bin.root)
+
+bin.remove(17)
 print2D(bin.root)
