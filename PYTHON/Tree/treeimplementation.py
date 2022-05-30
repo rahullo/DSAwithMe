@@ -82,6 +82,17 @@ class BinarySearchTree:
                         else:
                             parent_node.right = current_node.right
                             return
+                #Node has neither left nor right node
+                elif current_node.left == None and current_node.right ==  None:
+                    if parent_node == None:
+                        current_node == None
+                        return
+                    elif parent_node.value > current_node.value:
+                        parent_node.left = None
+                        return
+                    else:
+                        parent_node.right = None
+                        return
             
             
                 
@@ -130,5 +141,5 @@ def print2D(root) :
 
 print2D(bin.root)
 
-bin.remove(17)
+bin.remove(15)
 print2D(bin.root)
