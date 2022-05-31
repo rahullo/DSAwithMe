@@ -93,7 +93,8 @@ class BinarySearchTree:
                     else:
                         parent_node.right = None
                         return
-            
+                # Node has both left and right node
+
             
                 
 
