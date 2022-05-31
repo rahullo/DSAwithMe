@@ -1,3 +1,6 @@
+from hmac import trans_36
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -122,18 +125,29 @@ class BinarySearchTree:
             que.append(current_node.right)
         return self.breadthFirstSearchR(que, ans)
 
+    def DFSInorder(self):
+        return traverseInOrder(self.root, [])
+
+def traverseInOrder(node, ans):
+    if node.left:
+        traverseInOrder(node.left, ans)
+    ans.append(node.value)
+    if node.right:
+        traverseInOrder(node.right, ans)
+    return ans
+
             
                 
 
 bin = BinarySearchTree()
-bin.insert(20)
-bin.insert(25)
-bin.insert(17)
-bin.insert(23)
-bin.insert(24)
-bin.insert(15)
 bin.insert(9)
+bin.insert(4)
+bin.insert(1)
+bin.insert(6)
+bin.insert(20)
 bin.insert(15)
+bin.insert(170)
+bin.insert(150)
 # print(bin.lookup(0))
 COUNT = [10]
 
@@ -179,5 +193,6 @@ def print2D(root) :
 
 
 print2D(bin.root)
-print(bin.breadthFirstSearch())
-print(bin.breadthFirstSearchR([bin.root], []))
+# print(bin.breadthFirstSearch())
+# print(bin.breadthFirstSearchR([bin.root], []))
+print(bin.DFSInorder())
