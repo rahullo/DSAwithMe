@@ -131,6 +131,9 @@ class BinarySearchTree:
     def DFSpreorder(self):
         return traversepreOrder(self.root, [])
 
+    def DFSpostorder(self):
+        return traversepostOrder(self.root, [])
+
 def traverseInOrder(node, ans):
     if node.left:
         traverseInOrder(node.left, ans)
@@ -147,7 +150,13 @@ def traversepreOrder(node, ans):
         traversepreOrder(node.right, ans)
     return ans
             
-                
+def traversepostOrder(node, ans):
+    if node.left:
+        traversepostOrder(node.left, ans)
+    if node.right:
+        traversepostOrder(node.right, ans)
+    ans.append(node.value)
+    return ans
 
 bin = BinarySearchTree()
 bin.insert(9)
@@ -207,3 +216,4 @@ print2D(bin.root)
 # print(bin.breadthFirstSearchR([bin.root], []))
 print(bin.DFSInorder())
 print(bin.DFSpreorder())
+print(bin.DFSpostorder())
