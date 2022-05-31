@@ -110,8 +110,17 @@ class BinarySearchTree:
                 que.append(current_node.right)
         return ans
 
-    def depthFirstSearch(self):
-        current_node = self.root
+    def breadthFirstSearchR(self, que, ans):
+        if (len(que ) == 0): 
+            return ans
+        current_node = que[0: 1][0]
+        del(que[0:1])
+        ans.append(current_node.value)
+        if current_node.left:
+            que.append(current_node.left)
+        if current_node.right:
+            que.append(current_node.right)
+        return self.breadthFirstSearchR(que, ans)
 
             
                 
@@ -171,3 +180,4 @@ def print2D(root) :
 
 print2D(bin.root)
 print(bin.breadthFirstSearch())
+print(bin.breadthFirstSearchR([bin.root], []))
