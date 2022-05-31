@@ -95,6 +95,24 @@ class BinarySearchTree:
                         return
                 # Node has both left and right node
 
+    def breadthFirstSearch(self):
+        current_node = self.root
+        ans = []
+        que = []
+        que.append(current_node)
+        while len(que) > 0:
+            current_node = que[0:1][0]
+            del(que[0:1])
+            ans.append(current_node.value)
+            if current_node.left:
+                que.append(current_node.left)
+            if current_node.right:
+                que.append(current_node.right)
+        return ans
+
+    def depthFirstSearch(self):
+        current_node = self.root
+
             
                 
 
@@ -105,9 +123,9 @@ bin.insert(17)
 bin.insert(23)
 bin.insert(24)
 bin.insert(15)
-# bin.insert(9)
-# bin.insert(15)
-print(bin.lookup(0))
+bin.insert(9)
+bin.insert(15)
+# print(bin.lookup(0))
 COUNT = [10]
 
 def print2DUtil(root, space) :
@@ -140,7 +158,16 @@ def print2D(root) :
     print2DUtil(root, 0)
 
 
-print2D(bin.root)
 
-bin.remove(15)
+# bin.remove(15)
+# print2D(bin.root)
+
+
+# list1 = [1, 2, 3, 4, 5]
+# print(list1[0:1][0])
+# del(list1[0:1])
+# print(list1)
+
+
 print2D(bin.root)
+print(bin.breadthFirstSearch())
