@@ -32,3 +32,12 @@ def gcd(a, b):
         return gcd(b, a%b)
 
 print(gcd(30, 15))
+
+#########   By swaping 
+def gcdSwap(a, b):
+    while(b):
+        a %= b
+        a, b = b, a
+    return a
+
+print(gcdSwap(30, 15))
