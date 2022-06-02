@@ -31,7 +31,7 @@ def gcd(a, b):
     else:
         return gcd(b, a%b)
 
-print(gcd(30, 15))
+# print(gcd(30, 15))
 
 #########   By swaping 
 def gcdSwap(a, b):
@@ -40,4 +40,7 @@ def gcdSwap(a, b):
         a, b = b, a
     return a
 
-print(gcdSwap(30, 15))
+def lcm(a, b):
+    return int(a / gcd(a, b) * b)
+
+print(lcm(12, 6))
