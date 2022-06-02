@@ -19,3 +19,16 @@ def binPow(a, n):
 #         return res * res
 
 # print(binPow2(2, 9))
+
+############################
+#####################################
+#####  GCD or HCF
+def gcd(a, b):
+    if(b == 0):
+        return a
+    elif a == 0:
+        return b
+    else:
+        return gcd(b, a%b)
+
+print(gcd(30, 15))
