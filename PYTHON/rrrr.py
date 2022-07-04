@@ -1,28 +1,12 @@
-def getTotalX(a, b):
-    # Write your code here
-    
-    firstans = []
-    secondans = []
-    i = a[len(a)-1]
-    j = b[0]
-    x = 0
-    for x in range(i, j):
-        for item in a:
-            print(x, item)
-            if x % item != 0:
-                del(item)
-        print(a)
-    ans = set(firstans)  
+def longestCommonPrefix( strs):
+        if not strs:
+          return ''
 
-    for x in b:
-        for item in ans:
-            if x % item == 0:
-                secondans.append(item) 
+        for i in range(len(strs[0])):
+          for j in range(1, len(strs)):
+            if i == len(strs[j]) or strs[j][i] != strs[0][i]:
+              return strs[0][:i]
 
-    print(ans)
-    print(secondans)
-    print(set(secondans))
-    return len(set(secondans))                
+        return strs[0]
 
-print(getTotalX([2, 6], [24, 36]))
-# print(getTotalX([2, 4], [16, 32, 96]))
+print(longestCommonPrefix(["flower","flow","flight"]))
