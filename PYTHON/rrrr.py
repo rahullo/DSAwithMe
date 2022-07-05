@@ -1,12 +1,19 @@
-def longestCommonPrefix( strs):
-        if not strs:
-          return ''
+n = 51
+bad = 10
 
-        for i in range(len(strs[0])):
-          for j in range(1, len(strs)):
-            if i == len(strs[j]) or strs[j][i] != strs[0][i]:
-              return strs[0][:i]
+def isBadVersion(int):
+    if int == bad:
+        return True
+    else:
+        return False
 
-        return strs[0]
+def firstBadVersion( n):
+        ans = False
+        while ans == False:
+            if isBadVersion(n) == True:
+                ans = True
+                return n
+            else:
+                n-=1
 
-print(longestCommonPrefix(["flower","flow","flight"]))
+print(firstBadVersion(n))
