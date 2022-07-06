@@ -1,14 +1,18 @@
-def moveZeroes(nums):
-  i = len(nums) -1
-  if len(nums) <=1:
-    return nums
+def twoSum(numbers, target):
+  l = 0
+  r = len(numbers)-1
+  while l<r:
+    sum = numbers[l] + numbers[r]
+    if sum == target:
+      return [l+1, r+1]
+    elif sum < target:
+      l+=1
+    else:
+      r-=1
 
-  while i >=0:
-    if nums[i] ==0:
-      del nums[i]
-      nums.append(0)
-    i-=1
+print(twoSum([0, 0, 11, 15], 0))
 
-  return nums
+# li = [1, 2, 3, 4, 5]
+# ans = li[2:]
 
-print(moveZeroes([0]))
+# print(ans)
