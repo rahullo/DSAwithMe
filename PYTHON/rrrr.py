@@ -22,8 +22,8 @@ class Linked_List:
       self.length +=1
 
 
-  def printList(self):
-    curr = self.head
+  def printList(self, head):
+    curr = head
     while curr != None:
       print(curr.val, end='-> ')
       curr = curr.next
@@ -31,33 +31,40 @@ class Linked_List:
 link = Linked_List()
 link.append(1)
 link.append(2)
-link.append(3)
-link.append(4)
-link.append(5)
-link.append(6)
-link.append(7)
-link.printList()
+# link.append(3)
+# link.append(4)
+# link.append(5)
+# link.append(6)
+# link.append(7)
+link.printList(link.head)
 
-def middleNode(head):
-  i = -1
-  middle = None
+def middleNode(head, n):
+  if head.next == None:
+            head = None
+            return head
   node = head
-  ansmiddle = head
-  while node.next != None:
-    i+=1
-    if i == 0:
-      middle = (1+i)//2
-      continue
-    elif i%2 != 0:
-      middle = (1+i)//2
-    else:
-      middle = (1+i)//2
+  prevNode = None
+  x = Count(head)
+  if x == n:
+    head = head.next
+    return head
+  i = 0
+  while i != (x - (n-1)-1):
+    prevNode = node
     node = node.next
+    i+=1
+  prevNode.next = node.next
+  node.next = None
+  return head
 
-  n = 0
-  while middle != n:
-    ansmiddle = ansmiddle.next
-    n+=1
-  return ansmiddle
+def Count(head):
+  i = 0
+  node = head
+  while node != None:
+    i +=1
+    node = node.next
+  return i
+  
 print('\n')
-print(middleNode(link.head))
+head = middleNode(link.head, 2)
+link.printList(head)
