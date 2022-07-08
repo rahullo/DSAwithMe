@@ -1,14 +1,59 @@
-from audioop import reverse
+class Node:
+  def __init__(self, val=0, next=None):
+    self.val = val
+    self.next = next
 
 
-def findMedianSortedArrays(nums1, nums2):
-  merged = nums1 + nums2
+class Linked_List:
+  def __init__(self):
+    self.head = None
+    self.tail = self.head
+    self.length = 0
+
+  def append(self, value):
+    new_node = Node(value)
+    if self.head == None:
+      self.head = new_node
+      self.tail = new_node
+      self.length = 1
+    else:
+      self.tail.next = new_node
+      self.tail = new_node
+      self.length +=1
+
+
+  def printList(self):
+    curr = self.head
+    while curr != None:
+      print(curr.val, end=' ')
+      curr = curr.next
+  
+link1 = Linked_List()
+link2 = Linked_List()
+link3 = Linked_List()
+
+link1.append(1)
+link1.append(4)
+link1.append(5)
+
+link2.append(1)
+link2.append(3)
+link2.append(4)
+
+link3.append(2)
+link3.append(6)
+
+
+
+def mergeKLists(lists):
+  merged = []
+  for item in lists:
+    currentNode = item[0]
+    while currentNode != None:
+      merged.append(currentNode.val)
+      currentNode = currentNode.next
   merged.sort(reverse=False)
-  lenMerged = len(nums1)+len(nums2)
-  mid = lenMerged//2
-  if lenMerged % 2 == 0:
-    return ( merged[mid-1] + merged[mid])/2
-  else:
-    return merged[mid]
+  return merged
 
-print(findMedianSortedArrays([1, 2], [3, 4]))
+
+print(mergeKLists([[link1.head], [link2.head], [link3.head]]))
