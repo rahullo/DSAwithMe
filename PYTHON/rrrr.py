@@ -1,25 +1,18 @@
-def reverseString(s):
-    # list1 = []
-    # string = ' '
-    # i = 0
-    # l = len(s)
-    # for item in s:
-    #     if item !=' ':
-    #         string +=item
-    #         i+=1
-    #         continue
-    #     if item == ' ':
-    #         # string+=' '
-    #         list1.append(string)
-    #         string = ' '
-    #         i+=1
-    # list1.append(string)
-    # for i in range(len(list1)):
-    #     ans = ''.join(reversed(list1[i]))
-    #     list1[i] = ans
-    # print(list1)
-    # return ''.join(list1)
-    return " ".join([word[::-1] for word in s.split()])
+def waterInContainer(height):
+    ans = 0
+    l = 0
+    r = len(height) - 1
 
+    while l < r:
+      minHeight = min(height[l], height[r])
+      ans = max(ans, minHeight * (r - l))
+      print(minHeight, minHeight * (r - l), ans)
+      if height[l] < height[r]:
+        l += 1
+      else:
+        r -= 1
 
-print(reverseString( "Let's take LeetCode contest"))
+    return ans
+
+height = [1,8,6,2,5,4,8,3,7]
+print(waterInContainer(height))
