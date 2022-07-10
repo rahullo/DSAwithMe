@@ -1,37 +1,23 @@
-from collections import Counter
-def lengthOfLongestSubstring(s):
-  # strings = {}
-  # maxi = 0
-  # leng = 0
-  # for item in string:
-  #   if item not in strings:
-  #     strings[item] = True
-  #     leng+=1
-  #   elif item in strings:
-  #     maxi = max(maxi, leng)
-  #     leng = 0
-  #     strings = {}
-  #     strings[item] = True
-  #     leng+=1
-  #   maxi = max(maxi, leng)
-  # return maxi
-  ans = 0
-  count = Counter()
+def floodfill(image, sr, sc, newColor):
+  startcolor = image[sr][sc]
+  seen = set()
 
-  l = 0
-  for r, c in enumerate(s):
-    count[c] += 1
-    print(r, c, ans, l , count)
-    while count[c] > 1:
-      count[s[l]] -= 1
-      l += 1
-    ans = max(ans, r - l + 1)
+  def dfs(i, j):
+    if i < 0 or i==len(image) or j < 0 or j == len(image):
+      return
+    if image[i][j] != startcolor or (i, j) in seen:
+      return
+     
+    image[i] [j] = newColor
+    seen.add((i, j))
+    dfs(i+1, j)
+    dfs(i-1, j)
+    dfs(i, j+1)
+    dfs(i, j-1)
 
-  return ans
+  dfs(sr, sc)
+  return image
 
 
-# print(lengthOfLongestSubstring('abcabcbb'))
-# print(lengthOfLongestSubstring('bbbbb'))
-# print(lengthOfLongestSubstring('pwwkew'))
-# print(lengthOfLongestSubstring('aab'))
-print(lengthOfLongestSubstring('dvdf'))
+print(floodfill([[0, 0, 0], [0, 0, 0]], 0, 0, 0))
+print(floodfill([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 2))
