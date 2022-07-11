@@ -1,6 +1,3 @@
-from hmac import trans_36
-
-
 class Node:
     def __init__(self, value):
         self.value = value
